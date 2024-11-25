@@ -8,7 +8,7 @@ import ProfilePage from './Pages/ProfilePage';
 import { useEffect } from 'react';
 import { useAuthStore } from './store/useAuthStore';
 import { Loader } from 'lucide-react'
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast'
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth  } = useAuthStore();
@@ -28,7 +28,7 @@ if(isCheckingAuth && !authUser){
 }
   return (
     <div>
-      <Navbar />
+      <div>{<Navbar /> }</div>
 
       <Routes>
         <Route path='/' element={authUser ? <HomePage /> : <Navigate to='/login'/>}/>
