@@ -24,7 +24,7 @@ function Sidebar() {
           <span className="font-medium hidden lg:block">Contacts</span>
         </div>
         {/* TODO: Online filter toggle */}
-        <div className="mt-3 hidden lg:flex items-center gap-2">
+        {/* <div className="mt-3 hidden lg:flex items-center gap-2">
           <label className="cursor-pointer flex items-center gap-2">
             <input
               type="checkbox"
@@ -37,11 +37,11 @@ function Sidebar() {
           <span className="text-xs text-zinc-500">
             ({onlineUsers.length - 1} online)
           </span>
-        </div>
+        </div> */}
       </div>
 
       <div className="overflow-y-auto w-full py-3">
-        {filteredUsers.map((user) => (
+        {users.map((user) => (
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
@@ -57,7 +57,7 @@ function Sidebar() {
           >
             <div className="relative mx-auto lg:mx-0">
               <img
-                src={user.profilePic }
+                src={user.profilepic }
                 alt={user.name}
                 className="size-12 object-cover rounded-full"
               />
@@ -79,9 +79,9 @@ function Sidebar() {
           </button>
         ))}
 
-        {filteredUsers.length === 0 && (
+        {/* {filteredUsers.length === 0 && (
           <div className="text-center text-zinc-500 py-4">No online users</div>
-        )}
+        )} */}
       </div>
     </aside>
   );
