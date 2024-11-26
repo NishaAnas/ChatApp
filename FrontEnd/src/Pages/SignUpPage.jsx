@@ -10,7 +10,7 @@ import {
   User,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import AuthImagePattern from "../Components/AuthImagePattern";
+import AuthImagePattern from "../components/AuthImagePattern";
 import toast from "react-hot-toast";
 
 function SignUpPage() {
@@ -42,9 +42,9 @@ function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
+    <div className="min-h-screen pt-16 grid lg:grid-cols-2 mt-4">
       {/* LEFT SIDE */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
+      <div className="min-h-screen flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-md space-y-8">
           {/* LOGO */}
           <div className="text-center mb-8">

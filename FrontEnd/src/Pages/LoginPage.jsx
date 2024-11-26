@@ -18,9 +18,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
+    <div className="min-h-screen pt-16 grid lg:grid-cols-2 mt-4">
       {/* Left Side - Form */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
+      <div className="min-h-screen flex flex-col justify-center items-center p-6 sm:p-12 ">
         <div className="w-full max-w-md space-y-8">
           {/* Logo */}
           <div className="text-center mb-8">
@@ -109,7 +109,7 @@ const LoginPage = () => {
       </div>
 
       {/* Right Side - Image/Pattern */}
-      <AuthImagePattern
+      <AuthImagePattern 
         title={"Welcome back!"}
         subtitle={"Sign in to continue your conversations and catch up with your messages."}
       />
