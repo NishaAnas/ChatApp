@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
-import MessageSkeleton from "./skeletons/MessageSkeleton";
+import MessageSkeleton from "./Skeleton/MessageSkeleton";
 import { useAuthStore } from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
 
@@ -13,8 +13,8 @@ const ChatContainer = () => {
     getMessages,
     isMessagesLoading,
     selectedUser,
-    subscribeToMessages,
-    unsubscribeFromMessages,
+    //subscribeToMessages,
+   // unsubscribeFromMessages,
   } = useChatStore();
   const { authUser } = useAuthStore();
   const messageEndRef = useRef(null);
@@ -22,16 +22,20 @@ const ChatContainer = () => {
   useEffect(() => {
     getMessages(selectedUser._id);
 
-    subscribeToMessages();
+    //subscribeToMessages();
 
-    return () => unsubscribeFromMessages();
-  }, [selectedUser._id, getMessages, subscribeToMessages, unsubscribeFromMessages]);
+    //return () => unsubscribeFromMessages();
+  }, [selectedUser._id,
+    // getMessages, 
+   // subscribeToMessages, 
+   // unsubscribeFromMessages
+   ]);
 
-  useEffect(() => {
-    if (messageEndRef.current && messages) {
-      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
+//   useEffect(() => {
+//     if (messageEndRef.current && messages) {
+//       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+//     }
+//   }, [messages]);
 
   if (isMessagesLoading) {
     return (
@@ -59,8 +63,8 @@ const ChatContainer = () => {
                 <img
                   src={
                     message.senderId === authUser._id
-                      ? authUser.profilePic || "/avatar.png"
-                      : selectedUser.profilePic || "/avatar.png"
+                      ? authUser.profilepic 
+                      : selectedUser.profilepic 
                   }
                   alt="profile pic"
                 />
