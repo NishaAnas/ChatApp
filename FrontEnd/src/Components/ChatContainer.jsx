@@ -13,29 +13,33 @@ const ChatContainer = () => {
     getMessages,
     isMessagesLoading,
     selectedUser,
-    //subscribeToMessages,
-   // unsubscribeFromMessages,
+    subscribeToMessages,
+    unsubscribeFromMessages,
   } = useChatStore();
+
+
   const { authUser } = useAuthStore();
   const messageEndRef = useRef(null);
 
   useEffect(() => {
     getMessages(selectedUser._id);
 
-    //subscribeToMessages();
+    subscribeToMessages();
 
-    //return () => unsubscribeFromMessages();
-  }, [selectedUser._id,
-    // getMessages, 
-   // subscribeToMessages, 
-   // unsubscribeFromMessages
-   ]);
+    return () => unsubscribeFromMessages();
+  }, [
+    selectedUser._id,
+    getMessages,
+    subscribeToMessages,
+    unsubscribeFromMessages,
+  ]);
 
-//   useEffect(() => {
-//     if (messageEndRef.current && messages) {
-//       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
-//     }
-//   }, [messages]);
+  //for scrolling when there is  a new message 
+    useEffect(() => {
+      if (messageEndRef.current && messages) {
+        messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, [messages]);
 
   if (isMessagesLoading) {
     return (
@@ -55,7 +59,9 @@ const ChatContainer = () => {
         {messages.map((message) => (
           <div
             key={message._id}
-            className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}
+            className={`chat ${
+              message.senderId === authUser._id ? "chat-end" : "chat-start"
+            }`}
             ref={messageEndRef}
           >
             <div className=" chat-image avatar">
@@ -63,8 +69,8 @@ const ChatContainer = () => {
                 <img
                   src={
                     message.senderId === authUser._id
-                      ? authUser.profilepic 
-                      : selectedUser.profilepic 
+                      ? authUser.profilepic
+                      : selectedUser.profilepic
                   }
                   alt="profile pic"
                 />
